@@ -1,0 +1,76 @@
+<%= form_for @project, :html => { :class => "form-horizontal project" } do |f| %>
+
+    <% if @project.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @project.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :title, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:title) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :acronym, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :acronym, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:acronym) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_date, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.date_select :start_date, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:start_date) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :end_date, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.date_select :end_date, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:end_date) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :main_focus, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :main_focus, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:main_focus) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :funding_organization, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :funding_organization, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:funding_organization) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_area :description, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:description) %>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    projects_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+
+<% end %>
